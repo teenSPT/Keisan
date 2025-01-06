@@ -4,12 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- 外部スタイルシート -->
     <title>Ticker and FI Selector</title>
+    <style>
+        /* 内部スタイルシート */
+        body {
+            background-color: #1a1e27;
+            color: #9fa297;
+            font-family: "黒薔薇ゴシック heavy", sans-serif;
+        }
+        
+        h1 {
+            font-size: 1em; /* サイズを変更 */
+            color: #5fb800; /* 色を変更 */
+        }
+        
+        .container {
+            background-color: #1a1e27;
+            padding: 1px;
+            border-radius: 1px;
+        }
+
+        .form-control {
+            background-color: #1a1e27;
+            color: #9fa297;
+            border: 1px solid #9fa297;
+        }
+
+        .form-control:focus {
+            background-color: #1a1e27;
+            color: #9fa297;
+            border-color: #9fa297;
+            box-shadow: none;
+        }
+
+        .btn {
+            background-color: #1a1e27;
+            color: #9fa297;
+            border: 1px solid #9fa297;
+        }
+
+        .btn:hover {
+            background-color: #9fa297;
+            color: #1a1e27;
+        }
+
+        label {
+            color: #9fa297;
+        }
+    </style>
 </head>
 <body>
     <div class="container text-light" id="app">
-        <h1 class="text-center">Ticker and FI Selector</h1>
+        <h1 class="text-center">楽しく生きろ</h1>
 
         <!-- Ticker -->
         <div class="form-group">
