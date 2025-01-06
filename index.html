@@ -3,58 +3,169 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ticker and FI Selector</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="styles.css">
+    <title>Ticker and FI Selector</title>
 </head>
 <body>
-    <div class="container">
-        <h1>楽しく生きろ</h1>
-        
-        <div class="selector">
+    <div class="container text-light" id="app">
+        <h1 class="text-center">Ticker and FI Selector</h1>
+
+        <!-- Ticker -->
+        <div class="form-group">
             <label for="ticker">Ticker:</label>
-            <select id="ticker" onchange="updateSelection('ticker')">
-                <option value="">選択してください</option>
+            <select id="ticker" class="form-control" onchange="updateTicker(this.value)">
+                <option value="Ticker">Ticker</option>
                 <option value="BTC">BTC</option>
                 <option value="ETH">ETH</option>
                 <option value="SOL">SOL</option>
             </select>
         </div>
 
-        <div class="selector">
-            <label for="time">Time:</label>
-            <select id="time" onchange="updateSelection('time')">
-                <option value="">選択してください</option>
-                <option value="1W">1W</option>
+        <!-- FI -->
+        <div class="form-group">
+            <label for="time">FI:</label>
+            <div class="d-flex">
+                <select id="time" class="form-control me-2" onchange="updateTime(this.value)">
+                    <option value="Time">Time</option>
+                    <option value="1W">1W</option>
+                    <option value="1D">1D</option>
+                    <option value="4H">4H</option>
+                </select>
+                <select id="block" class="form-control" onchange="updateBlock(this.value)">
+                    <option value="Block">Block</option>
+                    <option value="Cont.">Cont.</option>
+                    <option value="CrK.">CrK.</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- BtoB -->
+        <div class="form-group">
+            <label for="b2tm">BtoB:</label>
+            <div class="d-flex">
+                <select id="b2tm" class="form-control me-2" onchange="updateB2tm(this.value)">
+                    <option value="Time">Time</option>
+                    <option value="1D">1D</option>
+                    <option value="4H">4H</option>
+                    <option value="1H">1H</option>
+                </select>
+                <select id="b2blk" class="form-control" onchange="updateB2blk(this.value)">
+                    <option value="Block">Block</option>
+                    <option value="SSB">SSB</option>
+                    <option value="Cont.">Cont.</option>
+                    <option value="CrK.">CrK.</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- TFC -->
+        <div class="form-group">
+            <label for="tfc">TFC:</label>
+            <select id="tfc" class="form-control" onchange="updateTfc(this.value)">
+                <option value="Time">Time</option>
                 <option value="1D">1D</option>
                 <option value="4H">4H</option>
+                <option value="1H">1H</option>
             </select>
         </div>
 
-        <div class="selector">
-            <label for="block">Block:</label>
-            <select id="block" onchange="updateSelection('block')">
-                <option value="">選択してください</option>
-                <option value="Cont.">Cont.</option>
-                <option value="CrK.">CrK.</option>
-            </select>
+        <!-- 決定打 -->
+        <div class="form-group">
+            <label for="decisiveTime">決定打:</label>
+            <div class="d-flex">
+                <select id="decisiveTime" class="form-control me-2" onchange="updateDecisiveTime(this.value)">
+                    <option value="Time">Time</option>
+                    <option value="15m">15m</option>
+                    <option value="5m">5m</option>
+                    <option value="1m">1m</option>
+                    <option value="1mm">1mm</option>
+                </select>
+                <select id="decisiveBlock" class="form-control" onchange="updateDecisiveBlock(this.value)">
+                    <option value="Block">Block</option>
+                    <option value="SSB">SSB</option>
+                    <option value="Cont.">Cont.</option>
+                    <option value="CrK.">CrK.</option>
+                </select>
+            </div>
         </div>
 
-        <div class="selector">
-            <label for="broker">Broker:</label>
-            <select id="broker" onchange="updateSelection('broker')">
-                <option value="">選択してください</option>
-                <option value="XM">XM</option>
-                <option value="TITAN">TITAN</option>
-            </select>
-        </div>
+        <!-- C1 -->
+                <!-- C1 -->
+                <div class="form-group">
+                    <label for="c1tm">C1:</label>
+                    <div class="d-flex">
+                        <select id="c1tm" class="form-control me-2" onchange="updateC1tm(this.value)">
+                            <option value="Time">Time</option>
+                            <option value="15m">15m</option>
+                            <option value="5m">5m</option>
+                            <option value="1m">1m</option>
+                        </select>
+                        <select id="c1nc" class="form-control" onchange="updateC1nc(this.value)">
+                            <option value="c">c</option>
+                            <option value="1c">1c</option>
+                            <option value="2c">2c</option>
+                            <option value="3c">3c</option>
+                        </select>
+                    </div>
+                </div>
 
-        <button onclick="executeSelection()">🔥 実行</button>
+                <!-- C2 -->
+                <div class="form-group">
+                    <label for="c2tm">C2:</label>
+                    <div class="d-flex">
+                        <select id="c2tm" class="form-control me-2" onchange="updateC2tm(this.value)">
+                            <option value="Time">Time</option>
+                            <option value="15m">15m</option>
+                            <option value="5m">5m</option>
+                            <option value="1m">1m</option>
+                        </select>
+                        <select id="c2nc" class="form-control" onchange="updateC2nc(this.value)">
+                            <option value="c">c</option>
+                            <option value="1c">1c</option>
+                            <option value="2c">2c</option>
+                            <option value="3c">3c</option>
+                        </select>
+                    </div>
+                </div>
 
-        <div id="result" class="result"></div>
-        <div id="spread" class="spread"></div>
-        <button onclick="copyToClipboard()">Copy!!</button>
-    </div>
+                <!-- C3 -->
+                <div class="form-group">
+                    <label for="c3tm">C3:</label>
+                    <div class="d-flex">
+                        <select id="c3tm" class="form-control me-2" onchange="updateC3tm(this.value)">
+                            <option value="Time">Time</option>
+                            <option value="5m">5m</option>
+                            <option value="1m">1m</option>
+                            <option value="1mm">1mm</option>
+                        </select>
+                        <select id="c3nc" class="form-control" onchange="updateC3nc(this.value)">
+                            <option value="c">c</option>
+                            <option value="1c">1c</option>
+                            <option value="2c">2c</option>
+                            <option value="3c">3c</option>
+                        </select>
+                    </div>
+                </div>
 
-    <script src="script.js"></script>
-</body>
-</html>
+                <!-- Broker -->
+                <div class="form-group">
+                    <label for="broker">Broker:</label>
+                    <select id="broker" class="form-control" onchange="updateBroker(this.value)">
+                        <option value="Broker">Broker</option>
+                        <option value="XM">XM</option>
+                        <option value="TITAN">TITAN</option>
+                    </select>
+                </div>
+
+                <!-- Execute Button -->
+                <button class="btn btn-warning" onclick="executeSelection()">🔥 Execute</button>
+
+                <!-- Result Display -->
+                <div id="result" class="mt-3"></div>
+                <button class="btn btn-info" onclick="copyInfo()">Copy!!</button>
+                <button class="btn btn-info" onclick="copySpread()">Spread</button>
+                </div>
+                <script src="script.js"></script>
+                </body>
+                </html>
