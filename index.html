@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticker and FI Selector</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Ticker and FI Selector</h1>
+        
+        <div class="selector">
+            <label for="ticker">Ticker:</label>
+            <select id="ticker" onchange="updateSelection('ticker')">
+                <option value="">選択してください</option>
+                <option value="BTC">BTC</option>
+                <option value="ETH">ETH</option>
+                <option value="SOL">SOL</option>
+            </select>
+        </div>
+
+        <div class="selector">
+            <label for="time">Time:</label>
+            <select id="time" onchange="updateSelection('time')">
+                <option value="">選択してください</option>
+                <option value="1W">1W</option>
+                <option value="1D">1D</option>
+                <option value="4H">4H</option>
+            </select>
+        </div>
+
+        <div class="selector">
+            <label for="block">Block:</label>
+            <select id="block" onchange="updateSelection('block')">
+                <option value="">選択してください</option>
+                <option value="Cont.">Cont.</option>
+                <option value="CrK.">CrK.</option>
+            </select>
+        </div>
+
+        <div class="selector">
+            <label for="broker">Broker:</label>
+            <select id="broker" onchange="updateSelection('broker')">
+                <option value="">選択してください</option>
+                <option value="XM">XM</option>
+                <option value="TITAN">TITAN</option>
+            </select>
+        </div>
+
+        <button onclick="executeSelection()">🔥 実行</button>
+
+        <div id="result" class="result"></div>
+        <div id="spread" class="spread"></div>
+        <button onclick="copyToClipboard()">Copy!!</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
