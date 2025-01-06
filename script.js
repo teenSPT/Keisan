@@ -39,14 +39,3 @@
       const resultDiv = document.getElementById('result');
       const spreadDiv = document.getElementById('spread');
       const textToCopy = `${resultDiv.innerText}\n${spreadDiv.innerText}`;
-
-      if (textToCopy) {
-          navigator.clipboard.writeText(textToCopy).then(() => {
-              alert("結果がクリップボードにコピーされました！");
-          }).catch(err => {
-              console.error('クリップボードへのコピーに失敗しました:', err);
-          });
-      } else {
-          alert("コピーする内容がありません。");
-      }
-    }
