@@ -68,11 +68,12 @@
         <!-- Ticker -->
         <label for="ticker" class="me-2">Ticker:</label>
         <div class="form-group d-flex align-items-center">
+            <!-- 検索ボックス -->
+            <input type="text" id="search" class="form-control me-2" placeholder="Search" aria-label="Search" autocomplete="off">
 
-            <input type="text" id="search" class="form-control me-2" placeholder="Search" aria-label="Search" oninput="filterTickers()">
-            
+            <!-- Ticker 選択ボックス -->
             <select id="ticker" class="form-control" onchange="updateTicker(this.value)">
-                <option value="Ticker">Ticker</option>
+                <option value="Ticker" selected disabled>Ticker</option> <!-- 初期選択オプション -->
                 <option value="BTC">BTC</option>
                 <option value="ETH">ETH</option>
                 <option value="SOL">SOL</option>

@@ -33,16 +33,21 @@ const spreadData = {
 function filterTickers() {
     const searchValue = document.getElementById('search').value.toLowerCase();
     const tickerSelect = document.getElementById('ticker');
-    const options = tickerSelect.options;
+    const options = Array.from(tickerSelect.options);  // オプションを配列に変換
 
-    for (let i = 0; i < options.length; i++) {
-        const option = options[i];
-        const text = option.text.toLowerCase();
-        option.style.display = text.includes(searchValue) ? 'block' : 'none';
-    }
+    // 検索結果に一致するオプションと一致しないオプションを分ける
+    const matchedOptions = options.filter(option => option.text.toLowerCase().includes(searchValue));
+    const unmatchedOptions = options.filter(option => !option.text.toLowerCase().includes(searchValue));
+
+    // 一致するオプションを最初に、次に一致しないオプションを配置
+    const sortedOptions = [...matchedOptions, ...unmatchedOptions];
+
+    // <select>内のオプションを再配置
+    tickerSelect.innerHTML = '';  // 現在のオプションをクリア
+    sortedOptions.forEach(option => tickerSelect.appendChild(option));  // 新しい順番で追加
 }
 
-// 検索ボックスにイベントリスナーを追加
+// `input` イベントで即座にフィルタリング
 document.getElementById('search').addEventListener('input', filterTickers);
 
 
