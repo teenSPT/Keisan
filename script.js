@@ -16,13 +16,35 @@ let selectedBroker = 'Broker';
 
 // スプレッドデータの定義
 const spreadData = {
-    'BTC_XM': 300,
-    'ETH_XM': 150,
-    'BTC_TITAN': 100,
-    'ETH_TITAN': 200,
-    'SOL_XM': 250,
-    'SOL_TITAN': 180,
+    'BTC_XM': 9000,
+    'ETH_XM': 700,
+    'BTC_TITAN': 7500,
+    'ETH_TITAN': 900,
+    'SOL_XM': 200,
+    'SOL_TITAN': 150,
+    'JP225_XM': 9,
+    'JP225_TITAN': 100,
+    'US30_XM': 650,
+    'US30_TITAN': 80,
+    'XAUUSD_XM': 60,
+    'XAUUSD_TITAN': 30,
 };
+
+function filterTickers() {
+    const searchValue = document.getElementById('search').value.toLowerCase();
+    const tickerSelect = document.getElementById('ticker');
+    const options = tickerSelect.options;
+
+    for (let i = 0; i < options.length; i++) {
+        const option = options[i];
+        const text = option.text.toLowerCase();
+        option.style.display = text.includes(searchValue) ? 'block' : 'none';
+    }
+}
+
+// 検索ボックスにイベントリスナーを追加
+document.getElementById('search').addEventListener('input', filterTickers);
+
 
 function updateTicker(value) {
     selectedTicker = value;
@@ -97,9 +119,9 @@ function executeSelection() {
         ${selectedC1tm} ${selectedC1nc} / 
         ${selectedC2tm} ${selectedC2nc} / 
         ${selectedC3tm} ${selectedC3nc}...
-        
+
         ${selectedBroker} Spread: ${spread}
-        
+
     `;
     resultDiv.innerText = resultInfo;
 }
