@@ -14,6 +14,16 @@ let selectedC3tm = 'Time';
 let selectedC3nc = 'c';
 let selectedBroker = 'Broker';
 
+// スプレッドデータの定義
+const spreadData = {
+    'BTC_XM': 300,
+    'ETH_XM': 150,
+    'BTC_TITAN': 100,
+    'ETH_TITAN': 200,
+    'SOL_XM': 250,
+    'SOL_TITAN': 180,
+};
+
 function updateTicker(value) {
     selectedTicker = value;
 }
@@ -76,14 +86,20 @@ function updateBroker(value) {
 
 function executeSelection() {
     const resultDiv = document.getElementById('result');
+    const key = `${selectedTicker}_${selectedBroker}`;
+    const spread = spreadData[key] !== undefined ? spreadData[key] : "N/A";
+
     const resultInfo = `
         ${selectedTicker}: ${selectedTime} ${selectedBlock}   
         ${selectedB2tm} ${selectedB2blk} / TFC: ${selectedTfc} / 
         決定打: ${selectedDecisiveTime} ${selectedDecisiveBlock} / 
-        ...${selectedC1tm} ${selectedC1nc} / 
+        ...
+        ${selectedC1tm} ${selectedC1nc} / 
         ${selectedC2tm} ${selectedC2nc} / 
         ${selectedC3tm} ${selectedC3nc}...
-        ${selectedBroker}
+        
+        ${selectedBroker} Spread: ${spread}
+        
     `;
     resultDiv.innerText = resultInfo;
 }
@@ -91,11 +107,14 @@ function executeSelection() {
 function copyInfo() {
     const resultDiv = document.getElementById('result');
     navigator.clipboard.writeText(resultDiv.innerText).then(() => {
-        alert('情報がコピーされました！');
+        alert('Copy‼');
     });
 }
 
 function copySpread() {
-    // Spreadの計算ロジックをここに追加することができます
-    alert('Spreadのコピー機能は未実装です。');
+    const key = `${selectedTicker}_${selectedBroker}`;
+    const spread = spreadData[key] !== undefined ? spreadData[key] : "N/A";
+    navigator.clipboard.writeText(`${spread}`).then(() => {
+        alert(`Spread: ${spread}`);
+    });
 }
