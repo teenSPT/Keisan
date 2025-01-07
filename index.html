@@ -15,7 +15,7 @@
         }
         
         h1 {
-            font-size: 1em; /* サイズを変更 */
+            font-size: 0.5em; /* サイズを変更 */
             color: #5fb800; /* 色を変更 */
         }
         
@@ -49,14 +49,21 @@
             color: #1a1e27;
         }
 
+        #result {
+            color: #9fa297; /* フォントの色 */
+            font-size: 1em; /* フォントのサイズ */
+            font-family: "黒薔薇ゴシック heavy", sans-serif; /* フォントファミリー */
+        }
+        
         label {
             color: #9fa297;
         }
     </style>
 </head>
 <body>
+    <!-- ヘッダー　（何か入れたければ） -->
     <div class="container text-light" id="app">
-        <h1 class="text-center">楽しく生きろ</h1>
+        <h1 class="text-center"> 　　</h1>
 
         <!-- Ticker -->
         <div class="form-group">
@@ -123,6 +130,7 @@
             <div class="d-flex">
                 <select id="decisiveTime" class="form-control me-2" onchange="updateDecisiveTime(this.value)">
                     <option value="Time">Time</option>
+                    <option value="1H">1H</option>
                     <option value="15m">15m</option>
                     <option value="5m">5m</option>
                     <option value="1m">1m</option>
@@ -131,8 +139,10 @@
                 <select id="decisiveBlock" class="form-control" onchange="updateDecisiveBlock(this.value)">
                     <option value="Block">Block</option>
                     <option value="SSB">SSB</option>
+                    <option value="Saw">Saw</option>
                     <option value="Cont.">Cont.</option>
                     <option value="CrK.">CrK.</option>
+                    <option value="三本新値">三本新値</option>
                 </select>
             </div>
         </div>
